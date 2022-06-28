@@ -1,0 +1,21 @@
+{
+	"node": "n8n-nodes-tidbyt.tidbyt",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": [
+		"Analytics",
+		"Data & Storage"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/drudge/n8n-nodes-tidbyt"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/drudge/n8n-nodes-tidbyt"
+			}
+		]
+	}
+}
