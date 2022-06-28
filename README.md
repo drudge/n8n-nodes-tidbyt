@@ -8,6 +8,8 @@ n8n node for interacting with your [Tidbyt](https://www.tidbyt.com) devices and 
 > **Warning**
 > This node is currently targeting Node.js v18. Network calls on prior Node versions (without fetch) don't currently work.
 
+![](images/screenshot.png)
+
 ### Built with:
 
 * [node-tidbyt](https://www.github.com/drudge/node-tidbyt)
