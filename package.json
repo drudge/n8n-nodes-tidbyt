@@ -1,6 +1,6 @@
 {
     "name": "n8n-nodes-tidbyt",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "n8n node for interacting with your Tidbyt devices and Pixlet-based applications",
     "license": "MIT",
     "homepage": "https://github.com/drudge/n8n-nodes-tidbyt",
