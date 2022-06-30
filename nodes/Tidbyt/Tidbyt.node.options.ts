@@ -62,6 +62,21 @@ export const nodeDescription: INodeTypeDescription = {
 			default: 'push',
 		},
 		{
+            displayName: 'Installation ID',
+            name: 'installationId',
+            type: 'string',
+            required: true,
+            default: '',
+            description: 'The ID of the installation to delete.',
+            displayOptions: {
+                show: {
+                    operation: [
+                        'deleteInstallation',
+                    ],
+                },
+            },
+        },
+		{
 			displayName: 'Pixlet Code',
 			name: 'pixletCode',
 			typeOptions: {

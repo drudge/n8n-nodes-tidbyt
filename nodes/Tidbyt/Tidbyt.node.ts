@@ -150,6 +150,15 @@ export class Tidbyt implements INodeType {
 		return returnData;
 	}
 
+	static async deleteInstallation(fns: IExecuteFunctions, item: INodeExecutionData, itemIndex: number): Promise<INodeExecutionData[]> {
+		const credentials: ITidbytCredentials = (await fns.getCredentials('tidbyt')) as ITidbytCredentials;
+		const tidbyt = new TidbytApi(credentials.apiKey);
+		const device = await tidbyt.devices.get(credentials.deviceId);
+		const installationId = fns.getNodeParameter('installationId', itemIndex) as string;
+		const response = await device.installations.delete(installationId);
+		return [{ json: response }];
+	}
+
 	static async getAvailableApps(fns: IExecuteFunctions): Promise<INodeExecutionData[]> {
 		const credentials: ITidbytCredentials = (await fns.getCredentials('tidbyt')) as ITidbytCredentials;
 		const tidbyt = new TidbytApi(credentials.apiKey);
@@ -173,6 +182,8 @@ export class Tidbyt implements INodeType {
 				returnData.push(...await Tidbyt.getAvailableApps(this));
 			} else if (operation === 'listInstallations') {
 				returnData.push(...await Tidbyt.listInstallations(this));
+			} else if (operation === 'deleteInstallation') {
+				returnData.push(...await Tidbyt.deleteInstallation(this, item, itemIndex));
 			} else if (operation === 'getDeviceDetails') {
 				returnData.push(...await Tidbyt.getDeviceDetails(this));
 			} else if (operation === 'updateDeviceDetails') {
