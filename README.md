@@ -2,7 +2,7 @@
 
 ![n8n.io - Workflow Automation](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png)
 
-n8n node for interacting with your [Tidbyt](https://www.tidbyt.com) devices and [Pixlet](https://www.github.com/tidbyt/pixlet)-based applications.
+[n8n](https://www.n8n.io) node for interacting with your [Tidbyt](https://www.tidbyt.com) devices and [Pixlet](https://www.github.com/tidbyt/pixlet)-based applications.
 
 
 > **Warning**
