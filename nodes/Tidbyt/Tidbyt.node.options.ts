@@ -10,10 +10,10 @@ export const nodeDescription: INodeTypeDescription = {
 	name: 'tidbyt',
 	group: ['input'],
 	version: 1,
-	description: 'Tidbyt',
+	description: 'Interact with your Tidbyt devices and Pixlet-based apps',
 	defaults: {
 		name: 'Tidbyt',
-		color: '#125580',
+		color: '#78DECC',
 	},
 	icon: 'file:tidbyt.png',
 	inputs: ['main'],

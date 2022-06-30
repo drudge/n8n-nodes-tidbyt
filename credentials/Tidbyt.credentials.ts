@@ -5,7 +5,7 @@ import {
 
 export class Tidbyt implements ICredentialType {
 	name = 'tidbyt';
-	displayName = 'Tidbyt';
+	displayName = 'Tidbyt API';
 	documentationUrl = 'tidbyt';
 	properties: INodeProperties[] = [
 		{
