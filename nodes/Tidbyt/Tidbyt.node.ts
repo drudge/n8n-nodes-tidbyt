@@ -29,21 +29,47 @@ const debug = debuglog('n8n-nodes-tidbyt');
 (globalThis as any).fs = fs;
 (globalThis as any).TextEncoder = TextEncoder;
 (globalThis as any).TextDecoder = TextDecoder;
-
 (globalThis as any).performance = {
 	now() {
 		const [sec, nsec] = process.hrtime();
 		return sec * 1000 + nsec / 1000000;
 	},
 };
-
 (globalThis as any).crypto = {
 	getRandomValues(b: any) {
 		crypto.randomFillSync(b);
 	},
 };
-require("./wasm_exec");
 
+// TODO: Remove this when v18 is more widely used
+if (!(global as any).fetch) {
+    debug('polyfilling fetch');
+    const fetch = require('node-fetch-polyfill');
+    if (typeof  fetch.Headers.prototype.entries !== 'function') {
+        fetch.Headers.prototype.entries = function () {
+            const result = [];
+            const entries = [
+                ...Object.entries(this._headers).sort((a, b) => a[0] > b[0] ? 1 : -1),
+            ];
+
+            for (const [name, value] of entries) {
+                if (name === 'set-cookie') {
+                    for (const cookie of this._headers.cookies) {
+                        result.push([name, cookie]);
+                    }
+                } else result.push([name, value]);
+            }
+
+            return result.values();
+        };
+        (globalThis as any).fetch = fetch;
+        (globalThis as any).Headers = fetch.Headers;
+        (globalThis as any).Response = fetch.Response;
+        (globalThis as any).Request = fetch.Request;
+    }
+}
+
+require("./wasm_exec");
 
 const go = new (global as any).Go();
 go.env = Object.assign({ TMPDIR: require("os").tmpdir() }, process.env);

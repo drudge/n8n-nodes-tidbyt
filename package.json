@@ -55,6 +55,7 @@
     },
     "dependencies": {
         "n8n-core": "~0.101.0",
+        "node-fetch-polyfill": "^2.0.6",
         "node-webpmux": "^3.1.1",
         "tidbyt": "^1.0.0"
     },
@@ -76,6 +77,6 @@
         ]
     },
     "engines": {
-        "node": ">=18.0.0"
+        "node": ">=16.0.0"
     }
 }

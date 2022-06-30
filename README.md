@@ -6,7 +6,10 @@ n8n node for interacting with your [Tidbyt](https://www.tidbyt.com) devices and 
 
 
 > **Warning**
-> This node is currently targeting Node.js v18. Network calls on prior Node versions (without fetch) don't currently work.
+> This node is currently targeting **Node.js 18**.
+>
+> If your version of Node.js doesn't have [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), you may experience issues using HTTP requests in Pixlet code.
+> You may be able to enable it using the `--experimental-fetch` Node.js option when running n8n.
 
 ![](images/screenshot.png)
 
