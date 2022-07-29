@@ -34,6 +34,7 @@ For users on n8n v0.187+, your instance owner can install this node from [Commun
 After installing the node, you can use it like any other node. n8n displays the node in search results in the **Nodes** panel.
 
 ### Manual installation
+
 To get started install the package in your n8n root directory:
 
 `npm install n8n-nodes-tidbyt`

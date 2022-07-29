@@ -95,7 +95,7 @@ async function getWebPImage(data: any, width = 64, height = 32) {
 
 async function buildFrame(img: any, options = {}) {
     return WebP.Image.generateFrame({
-        img, 
+        img,
         ...options,
     });
 }
@@ -135,7 +135,7 @@ export class Tidbyt implements INodeType {
 		});
 
 		const binaryData = await fns.helpers.prepareBinaryData(image, 'image/webp');
-		return [{ json: {}, binary: { [dataPropertyName]:binaryData } } ];		
+		return [{ json: {}, binary: { [dataPropertyName]:binaryData } } ];
 	}
 
 	static async pushToDevice(fns: IExecuteFunctions, item: INodeExecutionData, itemIndex: number): Promise<INodeExecutionData[]> {
@@ -146,7 +146,10 @@ export class Tidbyt implements INodeType {
 		const dataPropertyName = fns.getNodeParameter('dataPropertyName', itemIndex) as string;
 		const data = await fns.helpers.getBinaryDataBuffer(itemIndex, dataPropertyName);
 		if (data) {
-			const response = await device.push(data, options);
+			const response = await device.push(data, {
+				...options,
+				installationID: options.installationId,
+			});
 			return [{ json: response }];
 		}
 
@@ -203,7 +206,7 @@ export class Tidbyt implements INodeType {
 
 		for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
 			const item: INodeExecutionData = items[itemIndex];
-			
+
 			if (operation === 'listAvailableApps') {
 				returnData.push(...await Tidbyt.getAvailableApps(this));
 			} else if (operation === 'listInstallations') {
