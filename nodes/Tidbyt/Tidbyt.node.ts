@@ -22,7 +22,6 @@ import * as WebP from 'node-webpmux';
 import * as TidbytApi from 'tidbyt';
 import * as crypto from 'crypto';
 import * as path from 'path';
-
 const debug = debuglog('n8n-nodes-tidbyt');
 
 (globalThis as any).require = require;
@@ -40,34 +39,6 @@ const debug = debuglog('n8n-nodes-tidbyt');
 		crypto.randomFillSync(b);
 	},
 };
-
-// TODO: Remove this when v18 is more widely used
-if (!(global as any).fetch) {
-    debug('polyfilling fetch');
-    const fetch = require('node-fetch-polyfill');
-    if (typeof  fetch.Headers.prototype.entries !== 'function') {
-        fetch.Headers.prototype.entries = function () {
-            const result = [];
-            const entries = [
-                ...Object.entries(this._headers).sort((a, b) => a[0] > b[0] ? 1 : -1),
-            ];
-
-            for (const [name, value] of entries) {
-                if (name === 'set-cookie') {
-                    for (const cookie of this._headers.cookies) {
-                        result.push([name, cookie]);
-                    }
-                } else result.push([name, value]);
-            }
-
-            return result.values();
-        };
-        (globalThis as any).fetch = fetch;
-        (globalThis as any).Headers = fetch.Headers;
-        (globalThis as any).Response = fetch.Response;
-        (globalThis as any).Request = fetch.Request;
-    }
-}
 
 require("./wasm_exec");
 

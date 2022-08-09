@@ -9,14 +9,14 @@
 > This node is currently targeting **Node.js 18**.
 >
 > If your version of Node.js doesn't have [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), you may experience issues using HTTP requests in Pixlet code.
-> You may be able to enable it using the `--experimental-fetch` Node.js option when running n8n.
+> You may be able to enable it using the `--experimental-fetch` Node.js option when running n8n on Node.js 16+.
 
 ![](images/screenshot.png)
 
 ### Built with:
 
 * [node-tidbyt](https://www.github.com/drudge/node-tidbyt)
-* [Pixlet](https://www.github.com/tidbyt/pixlet)  
+* [Pixlet](https://www.github.com/tidbyt/pixlet)
 * [Go - wasm_exec.js](https://github.com/golang/go/tree/master/misc/wasm)
 
 ## How to install
